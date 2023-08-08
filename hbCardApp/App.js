@@ -5,7 +5,7 @@ import MinhasConsultas from './src/screens/MinhasConsultas'
 
 export default function App() {
   return (
-    <MinhasConsultas/>
+   <MinhasConsultas/>
   );
 }
 

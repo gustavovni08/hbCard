@@ -1,10 +1,49 @@
-import { View, Text, StyleSheet} from "react-native";
+import { useState } from "react";
 import { FontAwesome5, AntDesign, Ionicons } from '@expo/vector-icons';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList} from "react-native";
 
+// import ListaDeConsultas from "../components/minhasConsultas/ListaDeConsultas";
 
-
+import CardConsulta from '../components/minhasConsultas/CardConsulta'
 
 export default function MinhasConsultas(){
+
+    const [lista, setLista] = useState([
+        {
+            consulta: 'Dentista',
+            data:'24/09'
+        },
+        {
+            consulta: 'Oftalmo',
+            data:'24/09'
+        },
+        {
+            consulta: 'Dentista',
+            data:'24/10'
+        },
+    ])
+    
+    const item = ({item}) =>{
+        return(
+            <CardConsulta
+            consulta={item.consulta}
+            data={item.data}/>
+        )
+    
+    }
+    
+    const adicionarConsulta = () => {
+    
+        const newConsulta = {
+            consulta: 'otorrinolaringologista',
+            data:'09/10'
+        }
+    
+        setLista([...lista, newConsulta])
+    
+        console.log(lista)
+    }
+
 
     return(
         <View style={styles.mainConstainer}>
@@ -13,7 +52,9 @@ export default function MinhasConsultas(){
 
                 {/* //userProfilePhoto */}
                 <View>
-                <FontAwesome5 name="user-circle" size={38} color="black" />
+                    <TouchableOpacity>
+                        <FontAwesome5 name="user-circle" size={38} color="black" />
+                    </TouchableOpacity>
                 </View>
 
                 {/* //userInfo */}
@@ -32,7 +73,9 @@ export default function MinhasConsultas(){
 
                 {/* //showMore */}
                     <View style={styles.showMore}>
-                        <AntDesign name="down" size={17} color="black" />
+                        <TouchableOpacity>
+                            <AntDesign name="down" size={17} color="black" />
+                        </TouchableOpacity>
                     </View>
 
             </View>
@@ -44,17 +87,30 @@ export default function MinhasConsultas(){
                     <Text style={styles.minhasConsultasHeader}>Minhas Consultas</Text>
                 </View>
 
-                //listaConsultas
-                <View>
-
+                
+                <View style={styles.listaConsulta}>
+                    <View
+                    style={styles.listaConsulta}>
+                        <FlatList
+                        data={lista}
+                        renderItem={item}
+                        />
+                    </View>
                 </View>
 
 
             </View>
 
-                <View style={styles.novaConsulta}>
-                    <Ionicons name="add" size={24} color="white" />
-                    <Text style={styles.novaConsultaFont}> Nova Consulta</Text>
+                <View>
+                    <TouchableOpacity 
+                    style={styles.novaConsulta}
+                    onPress={adicionarConsulta}>
+
+                        <Ionicons name="add" size={24} color="white" />
+                        <Text style={styles.novaConsultaFont}> Nova Consulta</Text>
+
+                    </TouchableOpacity>
+                    
                 </View>
 
         </View>
@@ -109,6 +165,7 @@ const styles = StyleSheet.create({
     minhasConsultasHeaderContainer:{
         width:'80%',
         minWidth:360,
+        paddingRight:'2%',
     },
 
     minhasConsultasHeader:{
@@ -122,9 +179,9 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         padding: 14,
-        width:'60%',
+        width:'100%',
         minWidth:260,
-        maxWidth:560,
+        maxWidth:580,
 
         
     },
@@ -135,6 +192,13 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 400,
 
+    },
+
+    listaConsulta:{
+        alignItems: 'center',
+        justifyContent:'space-evenly',
+        width:'100%',
+        maxHeight: 300
     }
 
 
