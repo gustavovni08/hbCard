@@ -1,27 +1,14 @@
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { FontAwesome5, AntDesign, Ionicons } from '@expo/vector-icons';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList} from "react-native";
 
-// import ListaDeConsultas from "../components/minhasConsultas/ListaDeConsultas";
 
 import CardConsulta from '../components/minhasConsultas/CardConsulta'
 
 export default function MinhasConsultas(){
 
-    const [lista, setLista] = useState([
-        {
-            consulta: 'Dentista',
-            data:'24/09'
-        },
-        {
-            consulta: 'Oftalmo',
-            data:'24/09'
-        },
-        {
-            consulta: 'Dentista',
-            data:'24/10'
-        },
-    ])
+    const [lista, setLista] = useState([])
     
     const item = ({item}) =>{
         return(
@@ -42,6 +29,12 @@ export default function MinhasConsultas(){
         setLista([...lista, newConsulta])
     
         console.log(lista)
+    }
+
+    const navigation = useNavigation()
+
+    const navegarParaGuiaMedico = () => {
+        navigation.navigate('Guia médico')
     }
 
 
@@ -104,7 +97,7 @@ export default function MinhasConsultas(){
                 <View>
                     <TouchableOpacity 
                     style={styles.novaConsulta}
-                    onPress={adicionarConsulta}>
+                    onPress={navegarParaGuiaMedico}>
 
                         <Ionicons name="add" size={24} color="white" />
                         <Text style={styles.novaConsultaFont}> Nova Consulta</Text>
