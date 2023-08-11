@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet } from 'react-native';
 
 import MinhasConsultas from './src/screens/MinhasConsultas';
 import MarcaConsulta from './src/screens/MarcaConsulta';
@@ -19,5 +20,11 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  backGround:{
+    backgroundColor:'#f1f1f1'
+  }
+})
 
 

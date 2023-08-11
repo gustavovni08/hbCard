@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
         justifyContent:'space-evenly',
         marginTop:50,
         width:'80%',
-        minWidth:350,
-        maxWidth:500,
+        // minWidth:350,
+        // maxWidth:500,
         
     },
 
@@ -149,21 +149,27 @@ const styles = StyleSheet.create({
     minhasConsultasContainer:{
         flex: 0.7,
         width:'80%',
-        minWidth:360,
-        maxWidth:540,
+        // minWidth:360,
+        // maxWidth:540,
         marginTop: 20,
         // justifyContent: 'space-evenly'
     },
 
     minhasConsultasHeaderContainer:{
         width:'80%',
-        minWidth:360,
-        paddingRight:'2%',
+        // minWidth:300,
+        paddingLeft:60,
+        justifyContent:'flex-start'
+       
+        
     },
 
     minhasConsultasHeader:{
         fontSize: 19,
         fontWeight: '500',
+        marginTop:40,
+        paddingLeft:'10%',
+        
     },
 
     novaConsulta:{
@@ -173,8 +179,13 @@ const styles = StyleSheet.create({
         alignItems:'center',
         padding: 14,
         width:'100%',
-        minWidth:260,
-        maxWidth:580,
+        // minWidth:260,
+        // maxWidth:580,
+        elevation: 5,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
 
         
     },

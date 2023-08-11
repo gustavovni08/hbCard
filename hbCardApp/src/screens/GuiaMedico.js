@@ -9,37 +9,33 @@ import {
 import { useState } from "react";
 
 import { AntDesign } from '@expo/vector-icons';
-import CardConsulta from '../components/minhasConsultas/CardConsulta';
+import CardGuiaMedico from "../components/guiaMedico/CardGuiaMedico";
 
 export default function GuiaMedico(){
     
 
 
-    
+    //lista que a gente puxa do back com todos os médicos disponíveis
     const [lista, setLista] = useState([
 
         {
             consulta: 'Angiologista',
-            goTo: 'Marca Consulta'
         },
         
         {
             consulta: 'Cardiologista',
-            goTo: 'Marca Consulta'
         },
         
         {
             consulta: 'Dermatologista',
-            goTo: 'Marca Consulta'
         },
 
     ])
     
     const item = ({item}) =>{
         return(
-            <CardConsulta
+            <CardGuiaMedico
             consulta={item.consulta}
-            goTo={item.goTo}
             />
         )
     
@@ -61,7 +57,12 @@ export default function GuiaMedico(){
 
             
             <View style={styles.guiaMedicoContainer}>
-            <Text style={styles.labelFont}> Todas as consultas</Text>
+
+            <View style={styles.labelcontainer}>
+                <Text style={styles.labelFont}> Todas as consultas</Text>
+            </View>
+
+            
             <FlatList
             style={styles.guiaMedicolistaContainer}
             data={lista}
@@ -87,8 +88,6 @@ const styles = StyleSheet.create({
         backgroundColor:'#fff',
 
         width:'80%',
-        minWidth:400,
-        maxWidth:500,
 
         elevation: 5,
         shadowColor: '#000',
@@ -111,16 +110,21 @@ const styles = StyleSheet.create({
     },
 
     guiaMedicolistaContainer:{
-        width:400,
+        width:'80%',
         marginTop:20,
         
         // alignItems:'center'
     },
 
+    labelcontainer:{
+        justifyContent:"flex-start",
+        width:'80%',
+    },
+
     labelFont:{
         color:'#000',
-        fontWeight:'bold',
+        fontWeight:600,
         fontSize:19,
-        paddingRight:'27%'
+        
     }
 })
